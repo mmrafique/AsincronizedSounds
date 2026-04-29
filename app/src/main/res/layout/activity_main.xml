@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reproductor de Audios Asincronizado"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnPlayAudio1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reproducir Audio 1"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnPlayAudio2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reproducir Audio 2"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnPlayAudio3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reproducir Audio 3"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnPlayAudio4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reproducir Audio 4"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btnStopAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detener Todos"
+            android:backgroundTint="#FF6B6B"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estado: Listo"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+            android:background="#E8F5E9"
+            android:textColor="@color/black" />
+
+        <ListView
+            android:id="@+id/lvAudioLog"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"
+            android:background="#F5F5F5" />
+
+    </LinearLayout>
+
+</ScrollView>
