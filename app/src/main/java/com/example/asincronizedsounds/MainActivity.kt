@@ -34,11 +34,11 @@ class MainActivity : AppCompatActivity() {
         tvStatus = findViewById(R.id.tvStatus)
         val lvAudioLog: ListView = findViewById(R.id.lvAudioLog)
         
-        // Configurar adaptador para el log
+
         logAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, audioLog)
         lvAudioLog.adapter = logAdapter
         
-        // Configurar botones para reproducir audios
+
         findViewById<Button>(R.id.btnPlayAudio1).setOnClickListener {
             playAudioAsync(1, "Audio 1")
         }
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             playAudioAsync(4, "Audio 4")
         }
         
-        // Botón para detener todos los audios
+
         findViewById<Button>(R.id.btnStopAll).setOnClickListener {
             stopAllAudios()
         }
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             addLog("Iniciando reproducción: $audioName")
             updateStatus("Reproduciendo: $audioName")
             
-            // Ejecutar reproducción en hilo separado
+
             val result = withContext(Dispatchers.Default) {
                 playAudio(audioId)
             }
