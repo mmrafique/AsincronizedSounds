@@ -70,13 +70,6 @@
             android:background="#E8F5E9"
             android:textColor="@color/black" />
 
-        <ListView
-            android:id="@+id/lvAudioLog"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
-            android:background="#F5F5F5" />
-
     </LinearLayout>
 
 </ScrollView>

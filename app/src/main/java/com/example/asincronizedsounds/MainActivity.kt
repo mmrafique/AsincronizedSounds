@@ -2,10 +2,9 @@ package com.example.asincronizedsounds
 
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
@@ -15,10 +14,9 @@ class MainActivity : AppCompatActivity() {
     
     private val activePlayers = mutableListOf<MediaPlayer>()
     private val playerLock = Any()
-    private val audioLog = mutableListOf<String>()
-    private lateinit var logAdapter: ArrayAdapter<String>
     private lateinit var tvStatus: TextView
     private var coroutineScope = CoroutineScope(Dispatchers.Main + Job())
+    private var currentToast: Toast? = null
     
     private val audioResources = mapOf(
         1 to R.raw.audio1,
@@ -32,11 +30,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         
         tvStatus = findViewById(R.id.tvStatus)
-        val lvAudioLog: ListView = findViewById(R.id.lvAudioLog)
-        
-
-        logAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, audioLog)
-        lvAudioLog.adapter = logAdapter
         
 
         findViewById<Button>(R.id.btnPlayAudio1).setOnClickListener {
@@ -89,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             mp.setOnCompletionListener {
-                addLog("Sonido $audioId terminó naturalmente")
+                addLog("Sonido $audioId terminó")
                 synchronized(playerLock) {
                     activePlayers.remove(it)
                 }
@@ -130,15 +123,10 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun addLog(message: String) {
-        val timestamp = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
-        val logEntry = "[$timestamp] $message"
-        
         runOnUiThread {
-            audioLog.add(0, logEntry)
-            if (audioLog.size > 50) {
-                audioLog.removeAt(audioLog.size - 1)
-            }
-            logAdapter.notifyDataSetChanged()
+            currentToast?.cancel()
+            currentToast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
+            currentToast?.show()
         }
     }
     
